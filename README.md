@@ -29,17 +29,39 @@
 
    This project is my third Milestone Project, the purpose of this project is to demonstrate the skills and knowledge I have developed during the Python Essentials and Backend Development modules. I have chosen project idea 1 - create an online cookbook.
 
+   This cookbook will be a collection of simple homemade recipes initially from myself but hopefully in time they will be from around the world. It will be targeted at people who are looking for easy meal ideas that taste great! 
+   Large recipe databases such as [BBC Good Food]() or [The Food Network]() are full of things you might want to try for your next dinner party but not too many things you can whip up in 30 mins using basic cupboard supplies or even using food from the freezer. Nothing fancy just simple food that tastes good.
+   The intended users of the app range from parents looking for meal ideas for their weekly shop, young adults that have moved away from home and don't know what to cook (*put the pot noodles down*) and even for older adults that are looking to branch out and find new weeknight favourites.
+
    - This web application will be built using [Python](https://www.python.org/), [Flask](https://flask.palletsprojects.com/en/2.0.x/), [MongoDB](https://www.mongodb.com/), and a frontend framework called [Materialize](https://materializecss.com/).  
    - It  will allow users to store and easily access recipies via CRUD calls to a Mongo database.
    - This will be done in the context of a Flask application with HTML based user interfaces.
 
 ### User Goals
 
-- __External Users Goal__: Find and share recipies.
+#### First Time User Goals
+   - __As a first time user I want to:__
+      - be able to navigate around the site and find the content I am looking for with ease.
+      - filter and / or search for specific recipies
+      - browse for inspiration for meals
+
+#### Returning User Goals
+   - __As a returning user I want to:__
+      - be able to save my favourite recipes
+      - be able to share my recipes with friends
+      - share my recipes with others
+      - edit or delete the recipes I have shared
+      - see seasonal recipe suggestions
+      - see reccomended recipes based on my saved or viewed recipes
+      - leave recipe reviews / ratings 
+      - get email updates about new recipes I may like or Seasonal inspiration
 
 ### Developer and Business Goals
 
-- __Site Owner's Goal__: The site owner is looking for a place to find and share recipes as well as      wanting to build a database of recipies for their business needs.
+   - __As the site owner / developer I want to:__ 
+      - create a place to find and share authentic home made dinner ideas
+      - build a database of homemade recipies from around the world
+      - view statistics on recipe interactions and frequent user habits
 
 ### User Stories
 
