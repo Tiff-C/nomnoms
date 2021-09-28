@@ -1,0 +1,39 @@
+[
+    {
+        "categories":[
+            {"recipeCategory":"Beef"},
+            {"recipeCategory":"Breakfast"},
+            {"recipeCategory":"Chicken"},
+            {"recipeCategory":"Dessert"},
+            {"recipeCategory":"Lamb"},
+            {"recipeCategory":"Miscellaneous"},
+            {"recipeCategory":"Pasta"},
+            {"recipeCategory":"Pork"},
+            {"recipeCategory":"Seafood"},
+            {"recipeCategory":"Side"},
+            {"recipeCategory":"Starter"},
+            {"recipeCategory":"Vegan"},
+            {"recipeCategory":"Vegetarian"}
+        ]
+    },
+    {
+        "cuisines":[
+            {"recipeCuisine":"American"},{"recipeCuisine":"British"},{"recipeCuisine":"Canadian"},{"recipeCuisine":"Chinese"},{"recipeCuisine":"Croatian"},{"recipeCuisine":"Dutch"},{"recipeCuisine":"Egyptian"},{"recipeCuisine":"French"},{"recipeCuisine":"Greek"},{"recipeCuisine":"Indian"},{"recipeCuisine":"Irish"},{"recipeCuisine":"Italian"},{"recipeCuisine":"Jamaican"},{"recipeCuisine":"Japanese"},{"recipeCuisine":"Kenyan"},{"recipeCuisine":"Malaysian"},{"recipeCuisine":"Mexican"},{"recipeCuisine":"Moroccan"},{"recipeCuisine":"Polish"},{"recipeCuisine":"Portuguese"},{"recipeCuisine":"Russian"},{"recipeCuisine":"Spanish"},{"recipeCuisine":"Thai"},{"recipeCuisine":"Tunisian"},{"recipeCuisine":"Turkish"},{"recipeCuisine":"Unknown"},{"recipeCuisine":"Vietnamese"}
+        ]
+    },
+    {
+        "recipes": {
+            "name": "text",
+            "prepTime": "duration",
+            "cookTime": "duration",
+            "cookingMethod": "text",
+            "recipeCategory": "text",
+            "recipeCuisine": "text",
+            "recipeIngredient": ["item list"],
+            "recipeInstructions": ["item list"],
+            "recipeYield": "quantative value",
+            "recipeImage": "url",
+            "tools": ["item list"]
+        }
+    }
+]
