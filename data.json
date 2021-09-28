@@ -32,8 +32,7 @@
             "recipeIngredient": ["item list"],
             "recipeInstructions": ["item list"],
             "recipeYield": "quantative value",
-            "recipeImage": "url",
-            "tools": ["item list"]
+            "recipeImage": "url"
         }
     }
 ]

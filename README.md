@@ -1,21 +1,57 @@
 # NomNoms
 
-   This project is my third Milestone Project, the purpose of this project is to demonstrate the skills and knowledge I have developed during the Python Essentials and Backend Development modules. I have chosen project idea 1 - create an online cookbook.
+## Table of Contents
 
-## About the project
+   1. [UX](#ux)
+      - [Project Goals](#project-goals)
+      - [User Goals](#user-goals)
+      - [Owner Goals](#owner-goals)
+      - [User Stories](#user-stories)
+      - [Design Choices](#design-choices)
+         - [Database Schema](#database-schema)
+      - [Wireframes](#wireframes)
+   2. [Features](#features)
+      - [Existing Features](#existing-features)
+      - [Features to implement](#features-to-impliment)
+   3. [Technologies Used](#technologies-used)
+   4. [Testing](#testing)
+   5. [Deployment](#deployment)
+      - [How to run this project locally](#how-to-run-this-project-locally)
+   6. [Credits](#credits)
+      - [Content](#content)
+      - [Media](#media)
+      - [Code](#code)
+      - [Acknowledgments](#acknowledgements)
+
+## UX
+
+### Project Goals
+
+   This project is my third Milestone Project, the purpose of this project is to demonstrate the skills and knowledge I have developed during the Python Essentials and Backend Development modules. I have chosen project idea 1 - create an online cookbook.
 
    - This web application will be built using [Python](https://www.python.org/), [Flask](https://flask.palletsprojects.com/en/2.0.x/), [MongoDB](https://www.mongodb.com/), and a frontend framework called [Materialize](https://materializecss.com/).  
    - It  will allow users to store and easily access recipies via CRUD calls to a Mongo database.
    - This will be done in the context of a Flask application with HTML based user interfaces.
 
-### Design
+### User Goals
 
 - __External Users Goal__: Find and share recipies.
-- __Site Owner's Goal__: Promote a brand of cooking tools.
 
-### Database Schema
+### Developer and Business Goals
 
-When thinking about my databases structure I decided to see if I could find any example recipie database's. During my search I found [schema.org/Recipe](https://schema.org/Recipe) and the specific [Schema](https://developers.google.com/search/docs/advanced/structured-data/recipe) Google use for their recipies database. Using these and [The Meal DB](https://www.themealdb.com/) for catagories and cuisine lists, I decided on the following structure for my database.
+- __Site Owner's Goal__: The site owner is looking for a place to find and share recipes as well as      wanting to build a database of recipies for their business needs.
+
+### User Stories
+
+(will fill section as project progresses)
+
+### Design Choices
+
+(will fill section as project progresses)
+
+#### Database Schema
+
+When thinking about my databases structure I decided to see if I could find any example recipie database's. During my search I found [schema.org/Recipe](https://schema.org/Recipe) and the specific [Schema](https://developers.google.com/search/docs/advanced/structured-data/recipe) Google use for their recipies database. Using these and [The Meal DB](https://www.themealdb.com/) for catagories and cuisine lists. I decided on the following structure for my database.
 
 __Collections:__ 
 1. Users
@@ -31,7 +67,7 @@ __Collections:__
 
 2. Categories
 
-   The categories list has been taken from [The Meal DB | Categories](https://www.themealdb.com/api/json/v1/1/list.php?c=list). The categories will be available for users to select when inputting a recipe. I have decided on the use of the categories TheMealDb to avoid the creation of duplicate categories through typo errors, naming variations etc. Adding and removing categories will require `superuser` to be set to `True`.
+   The categories list has been taken from [The Meal DB | Categories](https://www.themealdb.com/api/json/v1/1/list.php?c=list). The categories will be available for users to select when inputting a recipe. I have decided to use the specified categories instead of user input to avoid the creation of duplicate categories through typo errors, naming variations etc. The complete list of categories can be seen in [data.json](data.json). Adding and removing categories will require `username['superuser'] == True`.
 
    ```JSON
    {
@@ -41,7 +77,7 @@ __Collections:__
 
 3. Cuisines
 
-   The cuisines list has been taken from [The Meal DB | Cuisines](www.themealdb.com/api/json/v1/1/list.php?a=list). The cuisines will be available for users to select when inputting a recipe.  I have decided on the use of the cuisines used by TheMealDb to avoid the creation of duplicate cuisines through typo errors, naming variations etc. Adding and removing categories will require `superuser` to be set to `True`.
+   The cuisines list has been taken from [The Meal DB | Cuisines](www.themealdb.com/api/json/v1/1/list.php?a=list). The cuisines will be available for users to select when inputting a recipe. I have decided to use the specified cuisines instead of user input to avoid the creation of duplicate categories through typo errors, naming variations etc. The complete list of cuisines can be seen in [data.json](data.json) Adding and removing categories will require `username['superuser'] == True`.
 
    ```JSON
    {
@@ -65,7 +101,36 @@ __Collections:__
       "recipeIngredient": ["item list"],
       "recipeInstructions": ["item list"],
       "recipeYield": "quantative value",
-      "recipeImage": "url",
-      "tools": ["item list"]
+      "recipeImage": "url"
    }
    ```
+
+
+### Wireframes
+
+(will fill section as project progresses)
+
+## Features
+
+### Existing Features
+
+(will fill section as project progresses)
+
+### Features to Implement
+
+(will fill section as project progresses)
+
+## Technologies used
+
+(will fill section as project progresses)
+
+## Testing
+
+(will fill section as project progresses)
+
+## Deployment
+
+(will fill section as project progresses)
+
+### How to run This Project Locally
+
