@@ -1,4 +1,7 @@
-# NomNoms
+# NomNoms 
+
+> "Cooking made simple"
+      > *- NomNoms Founder*
 
 ## Table of Contents
 
@@ -6,7 +9,6 @@
       - [Project Goals](#project-goals)
       - [User Goals](#user-goals)
       - [Owner Goals](#owner-goals)
-      - [User Stories](#user-stories)
       - [Design Choices](#design-choices)
          - [Database Schema](#database-schema)
       - [Wireframes](#wireframes)
@@ -39,7 +41,7 @@
 
 ### User Goals
 
-#### First Time User Goals
+#### First Time User Goals 
    - __As a first time user I want to:__
       - be able to navigate around the site and find the content I am looking for with ease.
       - filter and / or search for specific recipies
@@ -56,20 +58,24 @@
       - leave recipe reviews / ratings 
       - get email updates about new recipes I may like or Seasonal inspiration
 
-### Developer and Business Goals
+### Developer and Business Goals / Stories
 
-   - __As the site owner / developer I want to:__ 
+   - __As the site owner I want to:__ 
       - create a place to find and share authentic home made dinner ideas
       - build a database of homemade recipies from around the world
       - view statistics on recipe interactions and frequent user habits
+      - add new categories and cusines as my database grows
 
-### User Stories
-
-(will fill section as project progresses)
 
 ### Design Choices
 
-(will fill section as project progresses)
+#### App Layout
+
+#### Color Scheme
+
+#### Typography
+
+#### Imagery
 
 #### Database Schema
 
@@ -130,7 +136,8 @@ __Collections:__
 
 ### Wireframes
 
-(will fill section as project progresses)
+- [Site Map](documentation/wireframes/ms3-site-map.png)
+- [Home](documentation/wireframes/ms3-home.png)
 
 ## Features
 
@@ -156,3 +163,23 @@ __Collections:__
 
 ### How to run This Project Locally
 
+
+## Credits
+
+
+
+### Content
+
+(will fill section as project progresses)
+
+### Media
+
+(will fill section as project progresses)
+
+### Code
+
+(will fill section as project progresses)
+
+### Acknowledgments
+
+- I used the information provided in [Tubik's](https://tubikstudio.com/) [Case Study: Recipies App UX Design](https://blog.tubikstudio.com/case-study-recipes-app-ux-design/) as a starting point for ideas on the type of user and site owner goals for my project.
