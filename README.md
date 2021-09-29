@@ -136,8 +136,8 @@ __Collections:__
 
 ### Wireframes
 
-- [Site Map](documentation/wireframes/ms3-site-map.png)
-- [Home](documentation/wireframes/ms3-home.png)
+- [Site Map](/documentation/wireframes/ms3-site-map.png)
+- [Home](/documentation/wireframes/ms3-home.png)
 
 ## Features
 
