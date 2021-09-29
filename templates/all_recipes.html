@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>NomNoms</h1>
+    {% for category in categories %}
+
+        {{ category.recipe_category }}
+
+    {% endfor %}
+
+    {% for cuisine in cuisines %}
+
+        {{ cuisine.recipe_cuisine }}
+        
+    {% endfor %}
+
+
+{% endblock %}

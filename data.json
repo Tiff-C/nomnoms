@@ -1,24 +1,24 @@
 [
     {
         "categories":[
-            {"recipeCategory":"Beef"},
-            {"recipeCategory":"Breakfast"},
-            {"recipeCategory":"Chicken"},
-            {"recipeCategory":"Dessert"},
-            {"recipeCategory":"Lamb"},
-            {"recipeCategory":"Miscellaneous"},
-            {"recipeCategory":"Pasta"},
-            {"recipeCategory":"Pork"},
-            {"recipeCategory":"Seafood"},
-            {"recipeCategory":"Side"},
-            {"recipeCategory":"Starter"},
-            {"recipeCategory":"Vegan"},
-            {"recipeCategory":"Vegetarian"}
+            {"recipe_category":"Beef"},
+            {"recipe_category":"Breakfast"},
+            {"recipe_category":"Chicken"},
+            {"recipe_category":"Dessert"},
+            {"recipe_category":"Lamb"},
+            {"recipe_category":"Miscellaneous"},
+            {"recipe_category":"Pasta"},
+            {"recipe_category":"Pork"},
+            {"recipe_category":"Seafood"},
+            {"recipe_category":"Side"},
+            {"recipe_category":"Starter"},
+            {"recipe_category":"Vegan"},
+            {"recipe_category":"Vegetarian"}
         ]
     },
     {
         "cuisines":[
-            {"recipeCuisine":"American"},{"recipeCuisine":"British"},{"recipeCuisine":"Canadian"},{"recipeCuisine":"Chinese"},{"recipeCuisine":"Croatian"},{"recipeCuisine":"Dutch"},{"recipeCuisine":"Egyptian"},{"recipeCuisine":"French"},{"recipeCuisine":"Greek"},{"recipeCuisine":"Indian"},{"recipeCuisine":"Irish"},{"recipeCuisine":"Italian"},{"recipeCuisine":"Jamaican"},{"recipeCuisine":"Japanese"},{"recipeCuisine":"Kenyan"},{"recipeCuisine":"Malaysian"},{"recipeCuisine":"Mexican"},{"recipeCuisine":"Moroccan"},{"recipeCuisine":"Polish"},{"recipeCuisine":"Portuguese"},{"recipeCuisine":"Russian"},{"recipeCuisine":"Spanish"},{"recipeCuisine":"Thai"},{"recipeCuisine":"Tunisian"},{"recipeCuisine":"Turkish"},{"recipeCuisine":"Unknown"},{"recipeCuisine":"Vietnamese"}
+            {"recipe_cuisine":"American"},{"recipe_cuisine":"British"},{"recipe_cuisine":"Canadian"},{"recipe_cuisine":"Chinese"},{"recipe_cuisine":"Croatian"},{"recipe_cuisine":"Dutch"},{"recipe_cuisine":"Egyptian"},{"recipe_cuisine":"French"},{"recipe_cuisine":"Greek"},{"recipe_cuisine":"Indian"},{"recipe_cuisine":"Irish"},{"recipe_cuisine":"Italian"},{"recipe_cuisine":"Jamaican"},{"recipe_cuisine":"Japanese"},{"recipe_cuisine":"Kenyan"},{"recipe_cuisine":"Malaysian"},{"recipe_cuisine":"Mexican"},{"recipe_cuisine":"Moroccan"},{"recipe_cuisine":"Polish"},{"recipe_cuisine":"Portuguese"},{"recipe_cuisine":"Russian"},{"recipe_cuisine":"Spanish"},{"recipe_cuisine":"Thai"},{"recipe_cuisine":"Tunisian"},{"recipe_cuisine":"Turkish"},{"recipe_cuisine":"Unknown"},{"recipe_cuisine":"Vietnamese"}
         ]
     },
     {
