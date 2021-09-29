@@ -71,11 +71,24 @@
 
 #### App Layout
 
+As there as a vast range of intended users for this site the layout must feel really simple, other than the recipe pages themselves the main layout will be square cards with images set as backgrounds with the card title below to ensure the text is easily readable. The cards will scroll left and right across the screen with arrow buttons being provided for desktop users. This layout is currently widley used in apps and sites and can be found across all platforms including tv apps, shopping apps, food apps and many more. The use of this layout will hopefully mean all users will know how to interact with the app upon first use.
+
 #### Color Scheme
+
+For the same reasons listed in the app layout section is want the colour scheme of my app to feel warm and welcoming whilst remaining easily readable. The specific colours used across my project are:
+   - Add colours here
+   - Add colours here
+   - Add colours here
+   - Add colours here
+   - Add colours here
 
 #### Typography
 
+For the typography of the site I will be using Google fonts, the font from the Sans-serif font family which has a high level of readability.
+
 #### Imagery
+
+As the main page of the site is mainly made up of images the images for this site need to be inviting and draw the user in. They will also need to be small file sizes to avoid longer loading times for users.
 
 #### Database Schema
 
@@ -89,7 +102,10 @@ __Collections:__
    ```JSON
    {
       "username": "username",
-      "password": "password"
+      "password": "password",
+      "superuser": "boolean",
+      "user_recipes": ["list of recipe IDs"],
+      "user_favourites": ["list of recipe IDs"]
    }
    ```
 
@@ -115,21 +131,34 @@ __Collections:__
 
 4. Recipes
 
-   For my recipies collection I will be using a condensed version of the [Recipes Schema](https://schema.org/Recipe) from [Schema.org](https://schema.org/). An example of this and the expected data types can be seen below. 
+   For my recipies collection I will be using a condensed version of the [Recipes Schema](https://schema.org/Recipe) from [Schema.org](https://schema.org/). I have also changed the property names from camelCase to Snake Case to provide uniformity across the project. An example of this and the expected data types can be seen below. 
    This format along with the flexibility providided by using a non-relational database like MongoDB will allow users to add their own units and measurements based on preference. I could add all units and measurements that users can then select as I have for Categories however due to the large variation of units and measurements used in recipies (e.g 'a pinch of salt', 'a slice of bread', 'half a pack of biscuits')I have decided that for now it would be best to let users input this themselves. This is something I may look at in the future to bring a little more uniformity to my data however I feel this is not required for my milestone project.
 
    ```JSON
    {
       "name": "text",
-      "prepTime": "duration",
-      "cookTime": "duration",
-      "cookingMethod": "text",
-      "recipeCategory": "text",
-      "recipeCuisine": "text",
-      "recipeIngredient": ["item list"],
-      "recipeInstructions": ["item list"],
-      "recipeYield": "quantative value",
-      "recipeImage": "url"
+      "author": "username",
+      "created_date": "date / time",
+      "prep_time": "duration",
+      "cook-time": "duration",
+      "cooking_method": "text",
+      "recipe_category": "text",
+      "recipe_cuisine": "text",
+      "recipe_ingredient": ["item list"],
+      "recipe_instructions": ["item list"],
+      "recipe_yield": "quantative value",
+      "recipe_image": "url",
+      "interaction_statistic": [
+         {
+            "type": "comments_counter",
+            "comments": [],
+            "comments_count": [],
+         },
+         {
+            "type": "favourites_counter",
+            "favourites_count": [],
+         }
+      ]
    }
    ```
 
@@ -159,10 +188,39 @@ __Collections:__
 
 ## Deployment
 
-(will fill section as project progresses)
+To prepare the app for deployment to Heroku I have created a `requirements.txt` file and a `Prockfile`. I did this using the following commands in the terminal:
+
+```
+pip3 freeze --local > requirements.txt
+```
+```
+echo web: python app.py > Procfile
+```
+
+When deploying the app on Heroku I used the GitHub deployment method and put the key, value pairs from the `env.py` in settings > config vars e.g `IP` as the key and `0.0.0.0` as the value.
+
+Once this info had been input into Heroku and the `requirements.txt` file and the `Prockfile` have been pushed to GitHub, I then went to deploy > enable automatic deployments and then selected 'deploy branch'.
+
+This method of deployment allows the app to update whenever new code is pushed to the GitHub repository.
 
 ### How to run This Project Locally
 
+#### The `env.py` doc
+
+To run the flask app locally you need to set up the environment defaults, as the setup contains sensitive info `env.py` has been added to `.gitignore`. An example of the code can be seen below with the sensitive data removed. 
+
+*note: when the `DEBUG` variable is set to `False` you won't see exact error messages. When running the app to view live changes to the code set this variable to `True`.*
+
+```python
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "<YOUR_SECRET_KEY_HERE>")
+os.environ.setdefault("MONGO_URI", "<YOUR_MONGOU_URI_HERE>")
+os.environ.setdefault("MONGO_DBNAME", "<YOUR_DBNAME_HERE>")
+os.environ.setdefault("DEBUG", "False")
+```
 
 ## Credits
 
