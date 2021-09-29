@@ -24,15 +24,28 @@
     {
         "recipes": {
             "name": "text",
-            "prepTime": "duration",
-            "cookTime": "duration",
-            "cookingMethod": "text",
-            "recipeCategory": "text",
-            "recipeCuisine": "text",
-            "recipeIngredient": ["item list"],
-            "recipeInstructions": ["item list"],
-            "recipeYield": "quantative value",
-            "recipeImage": "url"
+            "author": "username",
+            "created_date": "date / time",
+            "prep_time": "duration",
+            "cook-time": "duration",
+            "cooking_method": "text",
+            "recipe_category": "text",
+            "recipe_cuisine": "text",
+            "recipe_ingredient": ["item list"],
+            "recipe_instructions": ["item list"],
+            "recipe_yield": "quantative value",
+            "recipe_image": "url",
+            "interaction_statistic": [
+               {
+                  "type": "comments_counter",
+                  "comments": [],
+                  "comments_count": []
+               },
+               {
+                  "type": "favourites_counter",
+                  "favourites_count": []
+               }
+            ]
         }
     }
 ]

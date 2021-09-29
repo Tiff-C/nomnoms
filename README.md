@@ -180,7 +180,7 @@ __Collections:__
 
 ## Technologies used
 
-(will fill section as project progresses)
+To add my categories and cuisines into their respective collections I logged into the MongoShell and used `db.collections.insertMany()`.
 
 ## Testing
 
