@@ -115,7 +115,8 @@ __Collections:__
 
    ```JSON
    {
-      "recipeCategory": "category"
+      "recipe_category": "category",
+      "category_image": "link"
    }
    ```
 
@@ -125,7 +126,8 @@ __Collections:__
 
    ```JSON
    {
-      "recipeCuisine": "cuisine"
+      "recipe_cuisine": "cuisine",
+      "cuisine_image": "link"
    }
    ```
 
@@ -237,17 +239,17 @@ The images used in this project are all from BBC Good Food as this ensured all i
    - Categories
       - [Beef](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/roast-beef-recipes-536cd86.jpg?quality=90&webp=true&resize=300,272)
       - [Breakfast](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy-fc28587.jpg?quality=90&webp=true&resize=300,272)
-      - [Chicken]()
-      - [Dessert]()
-      - [Lamb]()
-      - [Misc]()
-      - [Pasta]()
-      - [Pork]()
-      - [Seafood]()
-      - [Side]()
-      - [Starter]()
-      - [Vegan]()
-      - [Vegetarian]()
+      - [Chicken](https://images.immediate.co.uk/production/volatile/sites/30/2021/04/Creamy-chicken-stew-32a0b1a.jpg?quality=90&webp=true&resize=300,272)
+      - [Dessert](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/plum-apple-cobbler-846b9e6.jpg?quality=90&resize=360,327)
+      - [Lamb](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/one-pan-easter-lamb-af14df4.jpg?quality=90&webp=true&resize=300,272)
+      - [Misc](https://images.immediate.co.uk/production/volatile/sites/30/2021/09/Pumpkin-pickle-27aec22.jpg?quality=90&resize=360,327)
+      - [Pasta](https://images.immediate.co.uk/production/volatile/sites/30/2021/05/tuna-pasta-salad-2-f1ae60f.jpg?quality=90&resize=360,327)
+      - [Pork](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/pork-belly-slices-14bc50f.jpg?quality=90&resize=360,327)
+      - [Seafood](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/creamy-salmon-leek-potato-traybake-367b3ff.jpg?quality=90&resize=360,327)
+      - [Side](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/salt-and-pepper-chips-fe15bf5.jpg?quality=90&resize=360,327)
+      - [Starter](https://images.immediate.co.uk/production/volatile/sites/30/2020/09/Chiu-Chow-Smacked-Cucumber-47dbeb2.jpg?quality=90&webp=true&resize=300,272)
+      - [Vegan](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/hdp-jambalaya-440-400-f14ba7f.jpg?quality=90&resize=360,327)
+      - [Vegetarian](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/slow-cooked-marrow-with-fennel-tomato_1-812f3fe.jpg?quality=90&resize=360,327)
    - Cuisines
       - [American]()
       - [British]()
