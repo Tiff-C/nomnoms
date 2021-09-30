@@ -23,9 +23,8 @@ mongo = PyMongo(app)
 def all_recipes():
     recipes = mongo.db.recipes.find()
     categories = list(mongo.db.categories.find())
-    cuisines = list(mongo.db.cuisines.find())
     return render_template(
-        "all_recipes.html", categories=categories, cuisines=cuisines)
+        "all_recipes.html", categories=categories, recipes=recipes)
 
 
 if __name__ == "__main__":
