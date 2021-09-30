@@ -232,7 +232,50 @@ os.environ.setdefault("DEBUG", "False")
 
 ### Media
 
-(will fill section as project progresses)
+The images used in this project are all from BBC Good Food as this ensured all images were of the same size, quality and of a low file size. The specific pages where the images were found can be seen below.
+
+   - Categories
+      - [Beef](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/roast-beef-recipes-536cd86.jpg?quality=90&webp=true&resize=300,272)
+      - [Breakfast](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy-fc28587.jpg?quality=90&webp=true&resize=300,272)
+      - [Chicken]()
+      - [Dessert]()
+      - [Lamb]()
+      - [Misc]()
+      - [Pasta]()
+      - [Pork]()
+      - [Seafood]()
+      - [Side]()
+      - [Starter]()
+      - [Vegan]()
+      - [Vegetarian]()
+   - Cuisines
+      - [American]()
+      - [British]()
+      - [Canadian]()
+      - [Chinese]()
+      - [Croatian]()
+      - [Dutch]()
+      - [Egyptian]()
+      - [French]()
+      - [Greek]()
+      - [Indian]()
+      - [Irish]()
+      - [Italian]()
+      - [Jamaican]()
+      - [Japanese]()
+      - [Kenyan]()
+      - [Malaysian]()
+      - [Mexican]()
+      - [Moroccan]()
+      - [Polish]()
+      - [Portuguese]()
+      - [Russian]()
+      - [Spanish]()
+      - [Thai]()
+      - [Tunisian]()
+      - [Turkish]()
+      - [Unknown]()
+      - [Vietnamese]()
 
 ### Code
 
