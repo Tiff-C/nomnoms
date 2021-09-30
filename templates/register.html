@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>Register</h2>
+
+    <div class="row">
+        <form class="col s12">
+            <div class="card-panel">
+                <!-- Username -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="prefix material-icons">person_add</i>
+                        <input id="username" name="username" minlength="5" maxlength="15" type="text" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="prefix material-icons">password</i>
+                        <input id="password" name="password" minlength="5" maxlength="15" type="text" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                        <label for="username">Password</label>
+                    </div>
+                </div>
+                <!-- submit -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button class="btn-large yellow darken-4 center-align" type="submit">
+                            Register
+                            <i class="material-icons">login</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
