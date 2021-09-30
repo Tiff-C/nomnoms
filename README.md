@@ -111,7 +111,7 @@ __Collections:__
 
 2. Categories
 
-   The categories list has been taken from [The Meal DB | Categories](https://www.themealdb.com/api/json/v1/1/list.php?c=list). The categories will be available for users to select when inputting a recipe. I have decided to use the specified categories instead of user input to avoid the creation of duplicate categories through typo errors, naming variations etc. The complete list of categories can be seen in [data.json](data.json). Adding and removing categories will require `username['superuser'] == True`.
+   The categories list has been taken from [The Meal DB | Categories](https://www.themealdb.com/api/json/v1/1/list.php?c=list) with 'starters' removed as I felt this was less relevant to my site. The categories will be available for users to select when inputting a recipe. I have decided to use the specified categories instead of user input to avoid the creation of duplicate categories through typo errors, naming variations etc. The complete list of categories can be seen in [data.json](data.json). Adding and removing categories will require `username['superuser'] == True`.
 
    ```JSON
    {
@@ -247,7 +247,6 @@ The images used in this project are all from BBC Good Food as this ensured all i
       - [Pork](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/pork-belly-slices-14bc50f.jpg?quality=90&resize=360,327)
       - [Seafood](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/creamy-salmon-leek-potato-traybake-367b3ff.jpg?quality=90&resize=360,327)
       - [Side](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/salt-and-pepper-chips-fe15bf5.jpg?quality=90&resize=360,327)
-      - [Starter](https://images.immediate.co.uk/production/volatile/sites/30/2020/09/Chiu-Chow-Smacked-Cucumber-47dbeb2.jpg?quality=90&webp=true&resize=300,272)
       - [Vegan](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/hdp-jambalaya-440-400-f14ba7f.jpg?quality=90&resize=360,327)
       - [Vegetarian](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/slow-cooked-marrow-with-fennel-tomato_1-812f3fe.jpg?quality=90&resize=360,327)
    - Cuisines
