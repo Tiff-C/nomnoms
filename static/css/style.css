@@ -2,3 +2,16 @@ body {
     font-family: Yaldevi, sans-serif;
     background-color: #fffde7;
 }
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.search-recipes {
+    min-height: 30vh;
+    margin-top: 1.5rem;
+}
