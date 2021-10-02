@@ -236,6 +236,8 @@ os.environ.setdefault("DEBUG", "False")
 
 The images used in this project are all from BBC Good Food as this ensured all images were of the same size, quality and of a low file size. The specific pages where the images were found can be seen below.
 
+To generate image links that would not be deleted over time I uploaded the images to [imgbb](https://imgbb.com/).
+
    - Categories
       - [Beef](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/roast-beef-recipes-536cd86.jpg?quality=90&webp=true&resize=300,272)
       - [Breakfast](https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy-fc28587.jpg?quality=90&webp=true&resize=300,272)

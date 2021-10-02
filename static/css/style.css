@@ -1,3 +1,5 @@
+/* Site wide styles */
+
 body {
     font-family: Yaldevi, sans-serif;
     background-color: #fffde7;
@@ -11,13 +13,10 @@ h2 {
     font-size: 2rem;
 }
 
+/* all_recipes styles */
+
 .search-recipes {
     min-height: 30vh;
     margin-top: 1.5rem;
     background-image: url(https://images.pexels.com/photos/301378/pexels-photo-301378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-}
-
-.center-items {
-    align-content: center;
-    justify-content: center;
 }
