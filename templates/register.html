@@ -4,7 +4,7 @@
     <h2>Register</h2>
 
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" method="POST" action="{{ url_for('register') }}">
             <div class="card-panel center-align">
                 <!-- Username -->
                 <div class="row">
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="prefix material-icons">password</i>
-                        <input id="password" name="password" minlength="5" maxlength="15" type="text" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                        <input id="password" name="password" minlength="5" maxlength="15" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="username">Password</label>
                     </div>
                 </div>
