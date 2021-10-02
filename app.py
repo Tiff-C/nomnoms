@@ -84,7 +84,8 @@ def login():
                     "username").lower()
                 flash("Welcome, {}".format(
                     request.form.get("username")))
-                return redirect(url_for("all_recipes", username=session["user"]))
+                return redirect(url_for(
+                    "all_recipes", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -95,6 +96,17 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
     return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    """
+    Logs user out by removing user from session cookies.
+    """
+    # remove user from session cookies
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
