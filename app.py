@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -107,6 +108,61 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    """
+    Renders add_recipe template. If method is post; stores form input from
+    user in recipe dict, inserts recipe into db, pushes the new recipe ID
+    to the users "user_recipes" array then redirects to my_recipes.
+    """
+    categories = mongo.db.categories.find().sort("recipe_category", 1)
+    cuisines = mongo.db.cuisines.find().sort("recipe_cuisine", 1)
+    cooking_methods = mongo.db.cooking_methods.find().sort("cooking_method", 1)
+
+    if request.method == "POST":
+        date = datetime.now()
+        user = session["user"]
+        recipe = {
+            "name": request.form.get("name"),
+            "author": user["username"],
+            "created_date": date,
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "cooking_method": request.form.get("cooking_method"),
+            "recipe_category": request.form.get("recipe_category"),
+            "recipe_cuisine": request.form.get("recipe_category"),
+            "recipe_ingredient": request.form.getlist("recipe_ingredient"),
+            "recipe_instructions": request.form.getlist("recipe_instructions"),
+            "recipe_yield": request.form.get("recipe_yield"),
+            "recipe_image": request.form.get("recipe_image"),
+            "interaction_statistic": [
+                {
+                    "type": "comments_counter",
+                    "comments": [],
+                    "comments_count": [],
+                },
+                {
+                    "type": "favourites_counter",
+                    "favourites_count": [],
+                }
+            ]
+        }
+        # stores the new ID for the recipe
+        recipeId = mongo.db.recipes.insert_one(recipe)
+        # pushes new recipe ID to the users "user_recipes"
+        mongo.db.users.update_one(
+            {"_id": ObjectId(user["_id"])},
+            {"$push": {"user_recipes": recipeId.inserted_id}})
+        flash("Recipe successfully added, thank you!")
+        return redirect(url_for("all_recipes"))
+
+    return render_template(
+        "add_recipe.html",
+        categories=categories,
+        cuisines=cuisines,
+        cooking_methods=cooking_methods)
 
 
 if __name__ == "__main__":

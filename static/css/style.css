@@ -20,3 +20,11 @@ h2 {
     margin-top: 1.5rem;
     background-image: url(https://images.pexels.com/photos/301378/pexels-photo-301378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
+
+/* add_recipe styles */
+
+#inputIngredientRow, #inputInstructionRow {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}

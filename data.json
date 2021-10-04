@@ -21,6 +21,25 @@
         ]
     },
     {
+        "cooking_methods":[
+            {"cooking_method": "Baking"},
+            {"cooking_method": "Frying"},
+            {"cooking_method": "Roasting"},
+            {"cooking_method": "Grilling"},
+            {"cooking_method": "Steaming"},
+            {"cooking_method": "Poaching"},
+            {"cooking_method": "Simmering"},
+            {"cooking_method": "Broiling"},
+            {"cooking_method": "Blanching"},
+            {"cooking_method": "Braizing"},
+            {"cooking_method": "Stewing"},
+            {"cooking_method": "Microwave"},
+            {"cooking_method": "Slowcooker"},
+            {"cooking_method": "No Cook"},
+            {"cooking_method": "Other"}
+        ]
+    },
+    {
         "recipes": {
             "name": "text",
             "author": "username",

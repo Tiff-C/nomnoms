@@ -126,12 +126,21 @@ __Collections:__
 
    ```JSON
    {
-      "recipe_cuisine": "cuisine",
-      "cuisine_image": "link"
+      "recipe_cuisine": "cuisine"
    }
    ```
 
-4. Recipes
+4. Cooking Methods
+
+   The list of cooking methods came from [Studential](https://www.studential.com/university/student-cooking/cooking-methods) with the addition of "microwaving", "slowcooker", "no cook" and "other". The cooking methods will be available for users to select when inputting a recipe, they will have the option of selecting multiple methods as some recipes may require mmore than one cooking method. I decided to use the specified cooking methods instead of user input to avoid the creation of duplicate categories through typo errors, naming variations etc. The complete list of cooking methods can be seen in [data.json](data.json) Adding and removing categories will require `username['superuser'] == True`.
+
+      ```JSON
+   {
+      "cooking_method": "cooking_method"
+   }
+   ```
+
+5. Recipes
 
    For my recipies collection I will be using a condensed version of the [Recipes Schema](https://schema.org/Recipe) from [Schema.org](https://schema.org/). I have also changed the property names from camelCase to Snake Case to provide uniformity across the project. An example of this and the expected data types can be seen below. 
    This format along with the flexibility providided by using a non-relational database like MongoDB will allow users to add their own units and measurements based on preference. I could add all units and measurements that users can then select as I have for Categories however due to the large variation of units and measurements used in recipies (e.g 'a pinch of salt', 'a slice of bread', 'half a pack of biscuits')I have decided that for now it would be best to let users input this themselves. This is something I may look at in the future to bring a little more uniformity to my data however I feel this is not required for my milestone project.
@@ -142,7 +151,7 @@ __Collections:__
       "author": "username",
       "created_date": "date / time",
       "prep_time": "duration",
-      "cook-time": "duration",
+      "cook_time": "duration",
       "cooking_method": "text",
       "recipe_category": "text",
       "recipe_cuisine": "text",
@@ -230,7 +239,7 @@ os.environ.setdefault("DEBUG", "False")
 
 ### Content
 
-(will fill section as project progresses)
+- My list of cooking methods came from [Studential](https://www.studential.com/university/student-cooking/cooking-methods) with the addition of "microwaving", "slowcooker", "no cook" and "other".
 
 ### Media
 
@@ -254,7 +263,8 @@ To generate image links that would not be deleted over time I uploaded the image
   
 ### Code
 
-(will fill section as project progresses)
+- The regular expression for allowing spaces between words as well as apostrophe's in add_recipe.html inputs were taken from the following Stack Overflow post's: [allow spaces](https://stackoverflow.com/questions/15472764/regular-expression-to-allow-spaces-between-words) and [allow apostrophe's](https://stackoverflow.com/questions/5676541/regex-to-enforce-alpha-numeric-but-allow-apostrophes-and-hyphens).
+- To dynamically add / remove input fields in add_recipe.html I used the code provided in this [Shouts.Dev post](https://shouts.dev/add-or-remove-input-fields-dynamically-using-jquery) as a starting point for my code.
 
 ### Acknowledgments
 

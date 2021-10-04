@@ -26,7 +26,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('all_recipes') }}">Home</a></li>
                     <li><a href="#">My Recipes</a></li>
-                    <li><a href="#">Add Recipe</a></li>
+                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -37,7 +37,7 @@
         <ul class="sidenav" id="mobile-demo">
                 <li><a href="{{ url_for('all_recipes') }}">Home</a></li>
                 <li><a href="#">My Recipes</a></li>
-                <li><a href="#">Add Recipe</a></li>
+                <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
         </ul>
