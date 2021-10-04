@@ -16,8 +16,8 @@ $("#addIngredientRow").click(function () {
     <div id="inputIngredientRow">
         <div class="input-field">
             <i class="prefix material-icons yellow-text text-darken-4">kitchen</i>
-            <input id="recipe_ingredient[]" name="recipe_ingredient[]" minlength="1" maxlength="15" type="text" pattern="^[a-zA-Z0-9'_ ]{1,15}$" class="validate">
-            <label for="recipe_ingredient[]">
+            <input id="recipe_ingredient" name="recipe_ingredient" minlength="3" maxlength="30" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{3,30}$" class="validate">
+            <label for="recipe_ingredient">
                 Recipe Ingredients
                 <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Ingredients required for this recipe, use + to add a new field.">help</i>
             </label>
@@ -49,8 +49,8 @@ $("#addInstructionRow").click(function () {
     <div id="inputInstructionRow">
         <div class="input-field">
             <i class="prefix material-icons yellow-text text-darken-4">kitchen</i>
-            <input id="recipe_instruction[]" name="recipe_instruction[]" minlength="1" maxlength="50" type="text" pattern="^[a-zA-Z0-9'_ ]{1,50}$" class="validate">
-            <label for="recipe_instruction[]">
+            <input id="recipe_instruction" name="recipe_instruction" minlength="5" maxlength="100" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{5,100}{1,50}$" class="validate">
+            <label for="recipe_instruction">
                 Recipe Instructions
                 <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Cooking instructions for this recipe, use + to add a new field.">help</i>
             </label>

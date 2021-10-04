@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="prefix material-icons yellow-text text-darken-4">create</i>
-                        <input id="name" name="name" minlength="5" maxlength="20" type="text" pattern="^[a-zA-Z'_ ]{3,15}$" class="validate" required>
+                        <input id="name" name="name" minlength="3" maxlength="50" type="text" pattern="^[a-zA-Z\'\_\s]{3,50}$" class="validate" required>
                         <label for="name">
                             Recipe Name
                             <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The name of the recipe">help</i>
@@ -93,7 +93,7 @@
                     <!-- Cooking Time -->
                     <div class="input-field col s12 m6">
                         <i class="prefix material-icons yellow-text text-darken-4">timer</i>
-                        <input id="cook_time" name="cook_time" minlength="1" maxlength="15" type="text" pattern="^[a-zA-Z0-9.'_ ]{1,15}$" class="validate" required>
+                        <input id="cook_time" name="cook_time" minlength="3" maxlength="15" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{3,15}$" class="validate" required>
                         <label for="prep_time">
                             Cooking Time
                             <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The cooking time for this recipe.">help</i>
@@ -107,8 +107,8 @@
                         <div id="inputIngredientRow">
                             <div class="input-field">
                                 <i class="prefix material-icons yellow-text text-darken-4">kitchen</i>
-                                <input id="recipe_ingredient[]" name="recipe_ingredient[]" minlength="1" maxlength="15" type="text" pattern="^[a-zA-Z0-9.'_ ]{1,15}$" class="validate">
-                                <label for="recipe_ingredient[]">
+                                <input id="recipe_ingredient" name="recipe_ingredient" minlength="3" maxlength="15" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{3,15}$" class="validate">
+                                <label for="recipe_ingredient">
                                     Recipe Ingredients
                                     <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Ingredients required for this recipe, use + to add a new field.">help</i>
                                 </label>
@@ -128,8 +128,8 @@
                         <div id="inputInstructionRow" class="row">
                             <div class="input-field col s12">
                                 <i class="prefix material-icons yellow-text text-darken-4">kitchen</i>
-                                <input id="recipe_instruction[]" name="recipe_instruction[]" minlength="1" maxlength="100" type="text" pattern="^[a-zA-Z0-9.'_ ]{1,100}$" class="validate">
-                                <label for="recipe_instruction[]">
+                                <input id="recipe_instruction" name="recipe_instruction" minlength="5" maxlength="100" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{5,100}$" class="validate">
+                                <label for="recipe_instruction">
                                     Recipe Instructions
                                     <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Cooking instructions for this recipe, use + to add a new field.">help</i>
                                 </label>
@@ -145,12 +145,12 @@
 
                 <!-- Recipe Image -->
                 <div class="row">
-                    <div class="file-path-wrapper input-field col s10">
+                    <div class="input-field col s10">
                         <i class="prefix material-icons yellow-text text-darken-4">add_a_photo</i>
-                        <input id="recipe_image" name="recipe_image" minlength="5" maxlength="20" type="file" class="validate file-path">
+                        <input id="recipe_image" name="recipe_image" pattern="https?:\/\/.+(jpg|jpeg|gif|bmp|png|tiff)" minlength="10" maxlength="500" type="url">
                         <label for="recipe_image">
                             Recipe Image
-                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Have a photo of this dish? Add it here">help</i>
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Have a photo of this dish? Add the URL here">help</i>
                         </label>
                     </div>
                 </div>

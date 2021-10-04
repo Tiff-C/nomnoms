@@ -123,7 +123,7 @@ def add_recipe():
 
     if request.method == "POST":
         date = datetime.now()
-        user = session["user"]
+        user = mongo.db.users.find_one({"username": session["user"]})
         recipe = {
             "name": request.form.get("name"),
             "author": user["username"],
@@ -134,20 +134,10 @@ def add_recipe():
             "recipe_category": request.form.get("recipe_category"),
             "recipe_cuisine": request.form.get("recipe_category"),
             "recipe_ingredient": request.form.getlist("recipe_ingredient"),
-            "recipe_instructions": request.form.getlist("recipe_instructions"),
+            "recipe_instructions": request.form.getlist(
+                "recipe_instruction"),
             "recipe_yield": request.form.get("recipe_yield"),
-            "recipe_image": request.form.get("recipe_image"),
-            "interaction_statistic": [
-                {
-                    "type": "comments_counter",
-                    "comments": [],
-                    "comments_count": [],
-                },
-                {
-                    "type": "favourites_counter",
-                    "favourites_count": [],
-                }
-            ]
+            "recipe_image": request.form.get("recipe_image")
         }
         # stores the new ID for the recipe
         recipeId = mongo.db.recipes.insert_one(recipe)
