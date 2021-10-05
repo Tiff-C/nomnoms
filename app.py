@@ -191,7 +191,10 @@ def add_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     """
-
+    Allows users to edit their added recipes.
+    Gets recipe ID and all categories, cuisines and cooking_methods and passes
+    this to the template.
+    If the request method is post it will update the recipe in MongoDB.
     """
     categories = mongo.db.categories.find().sort("recipe_category", 1)
     cuisines = mongo.db.cuisines.find().sort("recipe_cuisine", 1)
@@ -222,6 +225,13 @@ def edit_recipe(recipe_id):
         categories=categories,
         cuisines=cuisines,
         cooking_methods=cooking_methods)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("my_recipes", username=session["user"]))
 
 
 if __name__ == "__main__":
