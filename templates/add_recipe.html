@@ -56,7 +56,7 @@
                     <div class="input-field col s12">
                         <i class="prefix material-icons yellow-text text-darken-4">microwave</i>
                         <select id="recipe_category" name="recipe_category" class="validate" multiple required>
-                            <option value="" disabled selected>Select Cooking Method(s)</option>
+                            <option value="" disabled>Select Cooking Method(s)</option>
                             {% for cooking_method in cooking_methods %}
                                 <option value="{{ cooking_method.cooking_method }}">{{ cooking_method.cooking_method }}</option>
                             {% endfor %}
