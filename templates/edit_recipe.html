@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>Add a Recipe</h2>
+
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
+            <div class="card-panel">
+
+                <!-- Recipe Name -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="prefix material-icons yellow-text text-darken-4">create</i>
+                        <input id="name" name="name" minlength="3" maxlength="50" type="text" pattern="^[a-zA-Z\'\_\s]{3,50}$" class="validate" required>
+                        <label for="name">
+                            Recipe Name
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The name of the recipe">help</i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="prefix material-icons yellow-text text-darken-4">menu_book</i>
+                        <select id="recipe_category" name="recipe_category" class="validate" required>
+                            <option value="" disabled selected>Select Category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.recipe_category }}">{{ category.recipe_category }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="recipe_category">
+                            Recipe Category
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The recipe category, please select one">help</i>
+                        </label>
+                    </div>
+
+                    <!-- Cuisine -->
+                    <div class="input-field col s12 m6">
+                        <i class="prefix material-icons yellow-text text-darken-4">restaurant_menu</i>
+                        <select id="recipe_category" name="recipe_category" class="validate" required>
+                            <option value="" disabled selected>Select Cuisine</option>
+                            {% for cuisine in cuisines %}
+                            <option value="{{ cuisine.recipe_cuisine }}">{{ cuisine.recipe_cuisine }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="recipe_category">
+                            Recipe Cuisine
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The recipe cuisine, please select one">help</i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Cooking method -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="prefix material-icons yellow-text text-darken-4">microwave</i>
+                        <select id="recipe_category" name="recipe_category" class="validate" multiple required>
+                            <option value="" disabled selected>Select Cooking Method(s)</option>
+                            {% for cooking_method in cooking_methods %}
+                            <option value="{{ cooking_method.cooking_method }}">{{ cooking_method.cooking_method }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="recipe_category">
+                            Cooking Methods
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The cooking method for this recipe, please select all that apply">help</i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Recipe Yield -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="prefix material-icons yellow-text text-darken-4">dinner_dining</i>
+                        <input id="recipe_yield" name="recipe_yield" minlength="1" maxlength="15" type="text" pattern="^[a-zA-Z0-9.'_ ]{1,15}$" class="validate" required>
+                        <label for="recipe_yield">
+                            Recipe Yield
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="How many servings does this recipe produce">help</i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Prep Time -->
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <i class="prefix material-icons yellow-text text-darken-4">timer</i>
+                        <input id="prep_time" name="prep_time" minlength="1" maxlength="15" type="text" pattern="^[a-zA-Z0-9.'_ ]{1,15}$" class="validate">
+                        <label for="prep_time">
+                            Prep Time
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The amount of prep time required for this recipe.">help</i>
+                        </label>
+                    </div>
+                    <!-- Cooking Time -->
+                    <div class="input-field col s12 m6">
+                        <i class="prefix material-icons yellow-text text-darken-4">timer</i>
+                        <input id="cook_time" name="cook_time" minlength="3" maxlength="15" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{3,15}$" class="validate" required>
+                        <label for="prep_time">
+                            Cooking Time
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="The cooking time for this recipe.">help</i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ingredients -->
+                <div class="row">
+                    <div class="col s12">
+                        <div id="inputIngredientRow">
+                            <div class="input-field">
+                                <i class="prefix material-icons yellow-text text-darken-4">kitchen</i>
+                                <input id="recipe_ingredient" name="recipe_ingredient" minlength="3" maxlength="30" type="text" pattern="^[a-zA-Z0-9\.\'\_\s]{3,30}$" class="validate">
+                                <label for="recipe_ingredient">
+                                    Recipe Ingredients
+                                    <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Ingredients required for this recipe, use + to add a new field.">help</i>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="newIngredientRow"></div>
+                        <button id="addIngredientRow" type="button" class="btn green darken-2">
+                            Add ingredient
+                            <i class="medium material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- instructions -->
+                <div class="row">
+                    <div class="col">
+                        <div id="inputInstructionRow" class="row">
+                            <div class="input-field col s12">
+                                <i class="prefix material-icons yellow-text text-darken-4">kitchen</i>
+                                <input id="recipe_instruction" name="recipe_instruction" minlength="5" maxlength="100" type="text" pattern="^[a-zA-Z0-9\.\,\'\_\s]{5,100}$" class="validate">
+                                <label for="recipe_instruction">
+                                    Recipe Instructions
+                                    <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Cooking instructions for this recipe, use + to add a new field.">help</i>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="newInstructionRow"></div>
+                        <button id="addInstructionRow" type="button" class="btn green darken-2">
+                            Add step
+                            <i class="medium material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recipe Image -->
+                <div class="row">
+                    <div class="input-field col s10">
+                        <i class="prefix material-icons yellow-text text-darken-4">add_a_photo</i>
+                        <input id="recipe_image" name="recipe_image" pattern="https?:\/\/.+(jpg|jpeg|gif|bmp|png|tiff)" minlength="10" maxlength="500" type="url">
+                        <label for="recipe_image">
+                            Recipe Image
+                            <i class="tiny material-icons tooltipped" data-position="top" data-tooltip="Have a photo of this dish? Add the URL here">help</i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- submit -->
+                <div class="row">
+                    <div class="input-field col s12 m8 l6">
+                        <button class="btn-large yellow darken-4 center-align" type="submit">
+                            Add Recipe
+                            <i class="material-icons">post_add</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

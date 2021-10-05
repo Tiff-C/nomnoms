@@ -179,7 +179,7 @@ def add_recipe():
             {"_id": ObjectId(user["_id"])},
             {"$push": {"user_recipes": recipeId.inserted_id}})
         flash("Recipe successfully added, thank you!")
-        return redirect(url_for("my_recipes"))
+        return redirect(url_for("my_recipes", username=session["user"]))
 
     return render_template(
         "add_recipe.html",
