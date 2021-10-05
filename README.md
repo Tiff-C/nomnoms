@@ -75,11 +75,8 @@ As there as a vast range of intended users for this site the layout must feel re
 #### Color Scheme
 
 For the same reasons listed in the app layout section is want the colour scheme of my app to feel warm and welcoming whilst remaining easily readable. The specific colours used across my project are:
-   - Add colours here
-   - Add colours here
-   - Add colours here
-   - Add colours here
-   - Add colours here
+   - Materialize yellow darken-4 (#fbc02d)
+   - Materialize yellow lighten-5 (#fffde7)
 
 #### Typography
 
