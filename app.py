@@ -86,7 +86,7 @@ def login():
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
-                    "all_recipes", username=session["user"]))
+                    "my_recipes", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -97,6 +97,21 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
     return render_template("login.html")
+
+
+@app.route("/my_recipes/<username>", methods=["GET", "POST"])
+def my_recipes(username):
+    # grab only the session["user"] profile
+    if session["user"].lower() == username.lower():
+        # find the session["user"]
+        username = mongo.db.users.find_one({"username": username})
+        # grab only the recipes by this session["user"]
+        recipes = list(mongo.db.recipes.find({"author": username}))
+        return render_template(
+            "my_recipes.html", username=username, recipes=recipes)
+
+    # take the incorrect user to their own profile
+    return redirect(url_for("my_recipes", username=session["user"]))
 
 
 @app.route("/logout")
@@ -146,7 +161,7 @@ def add_recipe():
             {"_id": ObjectId(user["_id"])},
             {"$push": {"user_recipes": recipeId.inserted_id}})
         flash("Recipe successfully added, thank you!")
-        return redirect(url_for("all_recipes"))
+        return redirect(url_for("my_recipes"))
 
     return render_template(
         "add_recipe.html",
