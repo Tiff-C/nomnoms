@@ -163,9 +163,9 @@ def add_recipe():
             "created_date": date,
             "prep_time": request.form.get("prep_time"),
             "cook_time": request.form.get("cook_time"),
-            "cooking_method": request.form.get("cooking_method"),
+            "cooking_method": request.form.getlist("cooking_method"),
             "recipe_category": request.form.get("recipe_category"),
-            "recipe_cuisine": request.form.get("recipe_category"),
+            "recipe_cuisine": request.form.get("recipe_cuisine"),
             "recipe_ingredient": request.form.getlist("recipe_ingredient"),
             "recipe_instructions": request.form.getlist(
                 "recipe_instruction"),
@@ -183,6 +183,42 @@ def add_recipe():
 
     return render_template(
         "add_recipe.html",
+        categories=categories,
+        cuisines=cuisines,
+        cooking_methods=cooking_methods)
+
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    """
+
+    """
+    categories = mongo.db.categories.find().sort("recipe_category", 1)
+    cuisines = mongo.db.cuisines.find().sort("recipe_cuisine", 1)
+    cooking_methods = mongo.db.cooking_methods.find().sort("cooking_method", 1)
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    if request.method == "POST":
+        submit = {
+            "name": request.form.get("name"),
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "cooking_method": request.form.getlist("cooking_method"),
+            "recipe_category": request.form.get("recipe_category"),
+            "recipe_cuisine": request.form.get("recipe_cuisine"),
+            "recipe_ingredient": request.form.getlist("recipe_ingredient"),
+            "recipe_instructions": request.form.getlist(
+                "recipe_instruction"),
+            "recipe_yield": request.form.get("recipe_yield"),
+            "recipe_image": request.form.get("recipe_image")
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated")
+        return redirect(url_for("my_recipes", username=session["user"]))
+
+    return render_template(
+        "edit_recipe.html",
+        recipe=recipe,
         categories=categories,
         cuisines=cuisines,
         cooking_methods=cooking_methods)

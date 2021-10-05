@@ -26,7 +26,7 @@
                         <select id="recipe_category" name="recipe_category" class="validate" required>
                             <option value="" disabled selected>Select Category</option>
                             {% for category in categories %}
-                            <option value="{{ category.recipe_category }}">{{ category.recipe_category }}</option>
+                                <option value="{{ category.recipe_category }}">{{ category.recipe_category }}</option>
                             {% endfor %}
                         </select>
                         <label for="recipe_category">
@@ -41,7 +41,7 @@
                         <select id="recipe_category" name="recipe_category" class="validate" required>
                             <option value="" disabled selected>Select Cuisine</option>
                             {% for cuisine in cuisines %}
-                            <option value="{{ cuisine.recipe_cuisine }}">{{ cuisine.recipe_cuisine }}</option>
+                                <option value="{{ cuisine.recipe_cuisine }}">{{ cuisine.recipe_cuisine }}</option>
                             {% endfor %}
                         </select>
                         <label for="recipe_category">
@@ -58,7 +58,7 @@
                         <select id="recipe_category" name="recipe_category" class="validate" multiple required>
                             <option value="" disabled selected>Select Cooking Method(s)</option>
                             {% for cooking_method in cooking_methods %}
-                            <option value="{{ cooking_method.cooking_method }}">{{ cooking_method.cooking_method }}</option>
+                                <option value="{{ cooking_method.cooking_method }}">{{ cooking_method.cooking_method }}</option>
                             {% endfor %}
                         </select>
                         <label for="recipe_category">
