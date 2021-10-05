@@ -32,6 +32,16 @@ def all_recipes():
         "all_recipes.html", categories=categories, recipes=recipes)
 
 
+@app.route("/recipe/<recipe_id>")
+def recipe(recipe_id):
+    """
+    Gets the recipe from the recipe ID and passes it to the rendered recipe
+    template.
+    """
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipe.html", recipe=recipe)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """

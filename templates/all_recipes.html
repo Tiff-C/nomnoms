@@ -32,7 +32,7 @@
                         {% endif %}
                     </div>
                     <div class="card-action">
-                        <a href="#">{{ recipe.name }}</a>
+                        <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.name }}</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                         <img src="{{ category.category_image }}" alt="{{ category.recipe_category }} Dish">
                     </div>
                     <div class="card-action">
-                        <a href="#">{{ category.recipe_category }}</a>
+                        <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ category.recipe_category }}</a>
                     </div>
                 </div>
             </div>

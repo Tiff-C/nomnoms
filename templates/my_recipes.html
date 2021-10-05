@@ -21,7 +21,7 @@
                     <div class="card-action">
                         <div class="row">
                             <div class="col">
-                                <a href="#">{{ recipe.name }}</a>
+                                <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.name }}</a>
                             </div>
                         </div>
                         <div class="row">
