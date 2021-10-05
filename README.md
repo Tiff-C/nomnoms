@@ -1,7 +1,6 @@
 # NomNoms 
 
 > "Cooking made simple"
-      > *- NomNoms Founder*
 
 ## Table of Contents
 
@@ -183,11 +182,19 @@ __Collections:__
 
 ### Existing Features
 
-(will fill section as project progresses)
+- Responsive web application
+- Functionality to allow users to create a login and sign in.
+- CRUD functionality to allow users to view, add, edit and delete recipes.
+- Search recipes functionality.
 
 ### Features to Implement
 
-(will fill section as project progresses)
+- CRUD functionality to allow admin users to edit categories, cuisines and cooking methods in the app rahter than through MongoDB. 
+- Functionality to allow users to favourite recipes.
+- Functionality to allow users to rate a recipe.
+- Functionality to allow comments on recipes.
+- Manage account functionality that will allow users to edit their username, password and delete their account.
+- Functionality to allow users to upload a photo directly through the add_recipe/edit_recipe forms rather than linking to a photos URL.
 
 ## Technologies used
 
@@ -195,7 +202,7 @@ To add my categories and cuisines into their respective collections I logged int
 
 ## Testing
 
-(will fill section as project progresses)
+I have been testing my app throughout development and logging any errors/issues in the [issues](https://github.com/Tiff-C/ms3-backend-development/issues) tab of my repository with the tag of `bug`. I have also be referencing to these issues in my commit messages so that the issues, details and fixes are available in one location.
 
 ## Deployment
 
