@@ -36,9 +36,10 @@ def all_recipes():
 def register():
     """
     If the request method is post it will check if the username is already in
-    use. If username exists user is redirected to register page. If username
-    doesn't exist it will insert register dict into database then put user
-    into a session and redirect to my_recipes.
+    use.
+    If username exists user is redirected to register page.
+    If username doesn't exist it will insert register dict into database
+    then put user into a session and redirect to my_recipes.
     """
     if request.method == "POST":
         # check if username already exists in db
@@ -69,8 +70,9 @@ def login():
     """
     Renders login template, if method is post it checks if user exists.
     If user exists it checks the password, if the password is correct; puts
-    user into session with welcome message. If password is incorrect / user
-    does not exist; flashes message to user and redirects to login.
+    user into session with welcome message.
+    If password is incorrect / user does not exist; flashes message to user
+    and redirects to login.
     """
     if request.method == "POST":
         # Check if username exists in db
@@ -101,14 +103,30 @@ def login():
 
 @app.route("/my_recipes/<username>", methods=["GET", "POST"])
 def my_recipes(username):
-    # grab only the session["user"] profile
+    """
+    User will be redirected to this page on login.
+    If the session username matches the route username; it will find the
+    session["user"] and store the user_recipes ID's.
+    It then searches MongoDB for the recipes and renders my_recipes template.
+    If a user tries to access another users my_recipes page they will be
+    redirected to their own my_recipes page.
+    """
+    # get categories for recipes with no img URL
+    categories = list(mongo.db.categories.find())
+
     if session["user"].lower() == username.lower():
         # find the session["user"]
         username = mongo.db.users.find_one({"username": username})
+        # get list of users recipes
+        user_recipes = username["user_recipes"]
         # grab only the recipes by this session["user"]
-        recipes = list(mongo.db.recipes.find({"author": username}))
+        recipes = mongo.db.recipes.find({"_id": {"$in": user_recipes}})
+
         return render_template(
-            "my_recipes.html", username=username, recipes=recipes)
+            "my_recipes.html",
+            username=username,
+            categories=categories,
+            recipes=recipes)
 
     # take the incorrect user to their own profile
     return redirect(url_for("my_recipes", username=session["user"]))
