@@ -21,6 +21,10 @@ i {
     vertical-align: middle;
 }
 
+.padding-left {
+    padding-left: 1rem;
+}
+
 .card-image {
     height: 100%;
     overflow: hidden;
@@ -53,7 +57,6 @@ i {
 /* add_recipe styles */
 
 #inputIngredientRow, #inputInstructionRow {
-    display: inline-flex;
     flex-direction: row;
     align-items: center;
 }
