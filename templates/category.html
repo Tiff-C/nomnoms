@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h2>{{ category }} Recipes</h2>
+
+    {% if recipes|length > 0 %}
+        <div class="row">
+            {% for recipe in recipes %}
+                <div class="col s6 m4 l3">
+                    <div class="card">
+                        <div class="card-image">
+                            {% if recipe.recipe_image %}
+                                <img src="{{ recipe.recipe_image }}" alt="{{ recipe.name }}">
+                            {% else %}
+                                {% for category in categories %}
+                                    {% if category.recipe_category == recipe.recipe_category %}
+                                        <img src="{{ category.category_image }}" alt="{{ recipe.name }}">
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col s12">
+                <h3>No recipes for {{ category }} found.</h3>
+                {% if session.user %}
+                    <div class="row">
+                        <div class="col s12">
+                            <p>
+                                Help us grow, be the first to add a recipe to this category
+                                <a href="{{ url_for('add_recipe') }}" class="btn green darken-2"><i class="material-icons">add</i></a>
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

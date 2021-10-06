@@ -39,6 +39,17 @@ def search():
     return render_template("all_recipes.html", recipes=recipes)
 
 
+@app.route("/category/<recipe_category>")
+def category(recipe_category):
+    """
+    Renders the recipe category template.
+    """
+    category = recipe_category
+    recipes = list(mongo.db.recipes.find({"recipe_category": recipe_category}))
+
+    return render_template("category.html", recipes=recipes, category=category)
+
+
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     """

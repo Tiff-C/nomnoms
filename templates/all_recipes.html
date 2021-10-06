@@ -61,7 +61,7 @@
                         <img src="{{ category.category_image }}" alt="{{ category.recipe_category }} Dish">
                     </div>
                     <div class="card-action">
-                        <a href="#">{{ category.recipe_category }}</a>
+                        <a href="{{ url_for('category', recipe_category=category.recipe_category) }}">{{ category.recipe_category }}</a>
                     </div>
                 </div>
             </div>
