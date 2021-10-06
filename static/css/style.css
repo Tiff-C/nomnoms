@@ -13,6 +13,10 @@ h2 {
     font-size: 2rem;
 }
 
+i {
+    vertical-align: middle;
+}
+
 .card-image {
     height: 100%;
     overflow: hidden;
