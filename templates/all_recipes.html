@@ -2,14 +2,27 @@
 
 {% block main_content %}
 
-    <div class="card-panel search-recipes yellow darken-3 white-text">
-        <div class="container">
-            <h1 class="center-align">Cooking Made Simple</h1>
-            <form>
-                <div class="input-field">
-                    <input id="search" name="search" type="search">
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
+    <div class="card-panel search-recipes white-text">
+        <div class="container center-align">
+            <h1>Cooking Made Simple</h1>
+            <form action="{{ url_for('search') }}" method="post">
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <input id="query" name="query" type="text" class="white-text" required>
+                        <label for="query">
+                            Search Recipes
+                            <i class="material-icons left">search</i>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <a href="{{ url_for('all_recipes') }}" class="btn red darken-2">Reset</a>
+                        <button class="btn yellow darken-4" type="submit">
+                            Search
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -48,7 +61,7 @@
                         <img src="{{ category.category_image }}" alt="{{ category.recipe_category }} Dish">
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ category.recipe_category }}</a>
+                        <a href="#">{{ category.recipe_category }}</a>
                     </div>
                 </div>
             </div>
