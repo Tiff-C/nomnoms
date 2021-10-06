@@ -2,27 +2,6 @@
 
 > "Cooking made simple"
 
-## Table of Contents
-
-   1. [UX](#ux)
-      - [Project Goals](#project-goals)
-      - [User Goals](#user-goals)
-      - [Owner Goals](#owner-goals)
-      - [Design Choices](#design-choices)
-         - [Database Schema](#database-schema)
-      - [Wireframes](#wireframes)
-   2. [Features](#features)
-      - [Existing Features](#existing-features)
-      - [Features to implement](#features-to-impliment)
-   3. [Technologies Used](#technologies-used)
-   4. [Testing](#testing)
-   5. [Deployment](#deployment)
-      - [How to run this project locally](#how-to-run-this-project-locally)
-   6. [Credits](#credits)
-      - [Content](#content)
-      - [Media](#media)
-      - [Code](#code)
-      - [Acknowledgments](#acknowledgements)
 
 ## UX
 
@@ -35,7 +14,7 @@
    The intended users of the app range from parents looking for meal ideas for their weekly shop, young adults that have moved away from home and don't know what to cook (*put the pot noodles down*) and even for older adults that are looking to branch out and find new weeknight favourites.
 
    - This web application will be built using [Python](https://www.python.org/), [Flask](https://flask.palletsprojects.com/en/2.0.x/), [MongoDB](https://www.mongodb.com/), and a frontend framework called [Materialize](https://materializecss.com/).  
-   - It  will allow users to store and easily access recipies via CRUD calls to a Mongo database.
+   - It  will allow users to store and easily access recipes via CRUD calls to a Mongo database.
    - This will be done in the context of a Flask application with HTML based user interfaces.
 
 ### User Goals
@@ -43,7 +22,7 @@
 #### First Time User Goals 
    - __As a first time user I want to:__
       - be able to navigate around the site and find the content I am looking for with ease.
-      - filter and / or search for specific recipies
+      - filter and / or search for specific recipes
       - browse for inspiration for meals
 
 #### Returning User Goals
@@ -53,7 +32,7 @@
       - share my recipes with others
       - edit or delete the recipes I have shared
       - see seasonal recipe suggestions
-      - see reccomended recipes based on my saved or viewed recipes
+      - see recommended recipes based on my saved or viewed recipes
       - leave recipe reviews / ratings 
       - get email updates about new recipes I may like or Seasonal inspiration
 
@@ -61,7 +40,7 @@
 
    - __As the site owner I want to:__ 
       - create a place to find and share authentic home made dinner ideas
-      - build a database of homemade recipies from around the world
+      - build a database of homemade recipes from around the world
       - view statistics on recipe interactions and frequent user habits
       - add new categories and cusines as my database grows
 
@@ -70,7 +49,8 @@
 
 #### App Layout
 
-As there as a vast range of intended users for this site the layout must feel really simple, other than the recipe pages themselves the main layout will be square cards with images set as backgrounds with the card title below to ensure the text is easily readable. The cards will scroll left and right across the screen with arrow buttons being provided for desktop users. This layout is currently widley used in apps and sites and can be found across all platforms including tv apps, shopping apps, food apps and many more. The use of this layout will hopefully mean all users will know how to interact with the app upon first use.
+As there as a vast range of intended users for this site the layout must feel really simple, other than the recipe pages themselves the main layout will be square cards with images set as backgrounds with the card title below to ensure the text is easily readable. Originally I planned for the cards to scroll left and right across the screen with arrow buttons being provided for desktop users. This layout is currently widley used in apps and sites and can be found across all platforms including tv apps, shopping apps, food apps and many more. I felt the use of this layout would hopefully mean all users would know how to interact with the app upon first use. 
+However during development and testing I realised this may not be suitible for my app as the categories list contains 24 items and the carousel felt overcrowded with even 10 or so items. I thought a solouting to this could be to add a show more button that takes the user to a page with all categories listed. This however would have creted another step between the user arriving on the page and being able to view the recipes in that category. With this in mind I decided to leave the cards in responsive rows.
 
 #### Color Scheme
 
@@ -80,7 +60,7 @@ For the same reasons listed in the app layout section is want the colour scheme 
 
 #### Typography
 
-For the typography of the site I will be using Google fonts, the font from the Sans-serif font family which has a high level of readability.
+For the typography of the site I will be using Google fonts. The font used in my webb app is Yaldevi from the Sans-serif font family which has a high level of readability.
 
 #### Imagery
 
@@ -88,7 +68,7 @@ As the main page of the site is mainly made up of images the images for this sit
 
 #### Database Schema
 
-When thinking about my databases structure I decided to see if I could find any example recipie database's. During my search I found [schema.org/Recipe](https://schema.org/Recipe) and the specific [Schema](https://developers.google.com/search/docs/advanced/structured-data/recipe) Google use for their recipies database. Using these and [The Meal DB](https://www.themealdb.com/) for catagories and cuisine lists. I decided on the following structure for my database.
+When thinking about my databases structure I decided to see if I could find any example recipie database's. During my search I found [schema.org/Recipe](https://schema.org/Recipe) and the specific [Schema](https://developers.google.com/search/docs/advanced/structured-data/recipe) Google use for their recipes database. Using these and [The Meal DB](https://www.themealdb.com/) for catagories and cuisine lists. I decided on the following structure for my database.
 
 __Collections:__ 
 1. Users
@@ -138,8 +118,8 @@ __Collections:__
 
 5. Recipes
 
-   For my recipies collection I will be using a condensed version of the [Recipes Schema](https://schema.org/Recipe) from [Schema.org](https://schema.org/). I have also changed the property names from camelCase to Snake Case to provide uniformity across the project. An example of this and the expected data types can be seen below. 
-   This format along with the flexibility providided by using a non-relational database like MongoDB will allow users to add their own units and measurements based on preference. I could add all units and measurements that users can then select as I have for Categories however due to the large variation of units and measurements used in recipies (e.g 'a pinch of salt', 'a slice of bread', 'half a pack of biscuits')I have decided that for now it would be best to let users input this themselves. This is something I may look at in the future to bring a little more uniformity to my data however I feel this is not required for my milestone project.
+   For my recipes collection I will be using a condensed version of the [Recipes Schema](https://schema.org/Recipe) from [Schema.org](https://schema.org/). I have also changed the property names from camelCase to Snake Case to provide uniformity across the project. An example of this and the expected data types can be seen below. 
+   This format along with the flexibility providided by using a non-relational database like MongoDB will allow users to add their own units and measurements based on preference. I could add all units and measurements that users can then select as I have for Categories however due to the large variation of units and measurements used in recipes (e.g 'a pinch of salt', 'a slice of bread', 'half a pack of biscuits')I have decided that for now it would be best to let users input this themselves. This is something I may look at in the future to bring a little more uniformity to my data however I feel this is not required for my milestone project.
 
    ```JSON
    {
@@ -172,8 +152,11 @@ __Collections:__
 
 ### Wireframes
 
+Below are examples of the wireframes used for this project, as the web app has quite a few views that are similar to eachother and the focus of this project is on the data I haven't created an individual wireframe for each view.
+
 - [Site Map](/documentation/wireframes/ms3-site-map.png)
 - [Home](/documentation/wireframes/ms3-home.png)
+- [Login](/documentation/wireframes/ms3-login.png)
 
 ## Features
 
@@ -193,13 +176,15 @@ __Collections:__
 - Manage account functionality that will allow users to edit their username, password and delete their account.
 - Functionality to allow users to upload a photo directly through the add_recipe/edit_recipe forms rather than linking to a photos URL.
 
+When designing my web app I originally planned to have CRUD functionality for admin users as part of the MVP. During development I moved this to features to impliment to allow for more time to ensure existing features all work correctly without erros and provide visual responses to the user.
+
 ## Technologies used
 
 To add my categories and cuisines into their respective collections I logged into the MongoShell and used `db.collections.insertMany()`.
 
 ## Testing
 
-I have been testing my app throughout development and logging any errors/issues in the [issues](https://github.com/Tiff-C/ms3-backend-development/issues) tab of my repository with the tag of `bug`. I have also be referencing to these issues in my commit messages so that the issues, details and fixes are available in one location.
+I have been testing my app throughout development as each feature is added and logging any errors/issues in the [issues](https://github.com/Tiff-C/ms3-backend-development/issues) tab of my repository with the tag of `bug`. I have also be referencing to these issues in my commit messages so that the issues, details and fixes are available in one location.
 
 ## Deployment
 
@@ -272,4 +257,4 @@ To generate image links that would not be deleted over time I uploaded the image
 
 ### Acknowledgments
 
-- I used the information provided in [Tubik's](https://tubikstudio.com/) [Case Study: Recipies App UX Design](https://blog.tubikstudio.com/case-study-recipes-app-ux-design/) as a starting point for ideas on the type of user and site owner goals for my project.
+- I used the information provided in [Tubik's](https://tubikstudio.com/) [Case Study: Recipes App UX Design](https://blog.tubikstudio.com/case-study-recipes-app-ux-design/) as a starting point for ideas on the type of user and site owner goals for my project.
