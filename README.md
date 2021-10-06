@@ -180,15 +180,36 @@ When designing my web app I originally planned to have CRUD functionality for ad
 
 ## Technologies used
 
-To add my categories and cuisines into their respective collections I logged into the MongoShell and used `db.collections.insertMany()`.
+In addition to the technologies mentioned throughout my ReadMe I used the following Technologies:
+- HTML 5
+- CSS 3
+- Python 3
+- Jinja 
+- click==8.0.1
+- dnspython==2.1.0
+- Flask==2.0.1
+- Flask-PyMongo==2.3.0
+- itsdangerous==2.0.1
+- pymongo==3.12.0
+- Werkzeug==2.0.1
+- To add my categories and cuisines into their respective collections I logged into the MongoShell and used `db.collections.insertMany()`.
 
 ## Testing
 
 I have been testing my app throughout development as each feature is added and logging any errors/issues in the [issues](https://github.com/Tiff-C/ms3-backend-development/issues) tab of my repository with the tag of `bug`. I have also be referencing to these issues in my commit messages so that the issues, details and fixes are available in one location.
 
+- [HTML Validation](/documentation/testing/html-validation.png)
+   The section without a heading is the section for my Flash Messages, no other errors/issues were found.
+
+- [CSS Validation](/documentation/testing/css-validation.png)
+   The only erros with the CSS across the app are from the Materialzie CSS, no other errors/issues found.
+
+- Python Validation
+   To ensure my code is PEP8 compliant I have been using a Python linter in my development environment. There are no current issues/ errors.
+
 ## Deployment
 
-To prepare the app for deployment to Heroku I have created a `requirements.txt` file and a `Prockfile`. I did this using the following commands in the terminal:
+To prepare the app for deployment to [Heroku](https://www.heroku.com/) I have created a `requirements.txt` file and a `Procfile`. I did this using the following commands in the terminal:
 
 ```
 pip3 freeze --local > requirements.txt
