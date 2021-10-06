@@ -2,6 +2,7 @@
 
 > "Cooking made simple"
 
+View the live project [here](https://nom-nom-s.herokuapp.com/)
 
 ## UX
 
