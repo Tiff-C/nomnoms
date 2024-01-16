@@ -6,6 +6,8 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from pymongo.mongo_client import MongoClient
+from db import db
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -13,8 +15,10 @@ app = Flask(__name__)
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = os.environ.get("DB_URI")
+app.config["DB_URI"] = os.environ.get("DB_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
 
 
 mongo = PyMongo(app)
@@ -26,10 +30,16 @@ def all_recipes():
     """
     Gets all recipes and categories from db and renders all_recipes template
     """
-    recipes = mongo.db.recipes.find()
-    categories = list(mongo.db.categories.find())
-    return render_template(
-        "all_recipes.html", categories=categories, recipes=recipes)
+    try:
+        recipes = db.recipes.find()
+        categories = list(mongo.db.categories.find())
+        return render_template(
+            "all_recipes.html", categories=categories, recipes=recipes) 
+    except: 
+        print ("Error")
+        return render_template("all_recipes.html") 
+
+        
 
 
 @app.route("/search", methods=["GET", "POST"])
