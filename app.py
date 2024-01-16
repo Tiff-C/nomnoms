@@ -1,26 +1,38 @@
 import os
 from datetime import datetime
 from flask import (
-    Flask, flash, render_template,
+    Flask, flash, render_template, current_app, g,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo.mongo_client import MongoClient
-from db import db
+from pymongo.server_api import ServerApi
 if os.path.exists("env.py"):
     import env  # noqa
+
+
+# Set the Stable API version when creating a new client
+client = MongoClient(os.environ.get("DB_URI"), server_api=ServerApi('1'))
+                          
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
+
 
 app = Flask(__name__)
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("DB_URI")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["DB_URI"] = os.environ.get("DB_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 
-
+app.app_context().push()
 mongo = PyMongo(app)
 
 
@@ -31,12 +43,12 @@ def all_recipes():
     Gets all recipes and categories from db and renders all_recipes template
     """
     try:
-        recipes = db.recipes.find()
+        recipes = mongo.db.recipes.find()
         categories = list(mongo.db.categories.find())
         return render_template(
             "all_recipes.html", categories=categories, recipes=recipes) 
     except: 
-        print ("Error")
+        print ("Error getting recipies")
         return render_template("all_recipes.html") 
 
         
@@ -271,9 +283,3 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("my_recipes", username=session["user"]))
-
-
-if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=os.environ.get("DEBUG"))
