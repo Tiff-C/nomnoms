@@ -23,5 +23,5 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Solarized Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "ms-python.pylint"
 }
