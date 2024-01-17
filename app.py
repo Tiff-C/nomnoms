@@ -16,17 +16,24 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 
 
-# app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["FLASK_PORT"] = os.environ.get("FLASK_PORT")
-
 # turn on debugging if in development mode
 if os.environ.get("FLASK_ENV", "development") == "development":
     # turn on debugging, if in development
-    app.debug = True  # debug mnode
+    app.debug = os.environ.get("DEBUG")  # debug mnode
+
 
 # connect to the database
-cxn = MongoClient(os.environ.get("MONGO_URI"))
+cxn = MongoClient(os.environ.get("DB_URI"))
 db = cxn[os.environ.get("MONGO_DBNAME")]  # store a reference to the database
+
+
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+
+mongo = PyMongo(app)
+
 
 # the following try/except block is a way to verify that the database connection is alive (or not)
 try:
@@ -36,6 +43,7 @@ try:
 except Exception as e:
     # the ping command failed, so the connection is not available.
     print(" * MongoDB connection error:", e)  # debug
+
 
 # set up the routes
 
@@ -47,19 +55,19 @@ def all_recipes():
     Gets all recipes and categories from db and renders all_recipes template
     """
     try:
-        recipes = mongo.db.recipes.find()
-        categories = list(mongo.db.categories.find())
+        recipes = db.recipes.find()
+        categories = list(db.categories.find())
         return render_template(
             "all_recipes.html", categories=categories, recipes=recipes) 
     except: 
         print ("Error getting recipies")
-        return render_template("all_recipes.html") 
+        return render_template("error.html") 
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    recipes = mongo.db.recipes.find({"$text": {"$search": query}})
+    recipes = db.recipes.find({"$text": {"$search": query}})
     return render_template("all_recipes.html", recipes=recipes)
 
 
@@ -69,7 +77,7 @@ def category(recipe_category):
     Renders the recipe category template.
     """
     category = recipe_category
-    recipes = list(mongo.db.recipes.find({"recipe_category": recipe_category}))
+    recipes = list(db.recipes.find({"recipe_category": recipe_category}))
 
     return render_template("category.html", recipes=recipes, category=category)
 
@@ -79,8 +87,8 @@ def recipe(recipe_id):
     """
     Renders the recipe template.
     """
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    categories = list(mongo.db.categories.find())
+    recipe = db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = list(db.categories.find())
 
     return render_template("recipe.html", recipe=recipe, categories=categories)
 
@@ -96,7 +104,7 @@ def register():
     """
     if request.method == "POST":
         # check if username already exists in db
-        existing_user = mongo.db.users.find_one(
+        existing_user = db.users.find_one(
             {"username": request.form.get("username").lower()})
         if existing_user:
             flash("Username already exists")
@@ -109,7 +117,7 @@ def register():
             "user_recipes": [],
             "user_favourites": []
         }
-        mongo.db.users.insert_one(register)
+        db.users.insert_one(register)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
@@ -129,7 +137,7 @@ def login():
     """
     if request.method == "POST":
         # Check if username exists in db
-        existing_user = mongo.db.users.find_one(
+        existing_user = db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -165,15 +173,15 @@ def my_recipes(username):
     redirected to their own my_recipes page.
     """
     # get categories for recipes with no img URL
-    categories = list(mongo.db.categories.find())
+    categories = list(db.categories.find())
 
     if session["user"].lower() == username.lower():
         # find the session["user"]
-        username = mongo.db.users.find_one({"username": username})
+        username = db.users.find_one({"username": username})
         # get list of users recipes
         user_recipes = username["user_recipes"]
         # grab only the recipes by this session["user"]
-        recipes = mongo.db.recipes.find({"_id": {"$in": user_recipes}})
+        recipes = db.recipes.find({"_id": {"$in": user_recipes}})
 
         return render_template(
             "my_recipes.html",
@@ -203,13 +211,13 @@ def add_recipe():
     user in recipe dict, inserts recipe into db, pushes the new recipe ID
     to the users "user_recipes" array then redirects to my_recipes.
     """
-    categories = mongo.db.categories.find().sort("recipe_category", 1)
-    cuisines = mongo.db.cuisines.find().sort("recipe_cuisine", 1)
-    cooking_methods = mongo.db.cooking_methods.find().sort("cooking_method", 1)
+    categories = db.categories.find().sort("recipe_category", 1)
+    cuisines = db.cuisines.find().sort("recipe_cuisine", 1)
+    cooking_methods = db.cooking_methods.find().sort("cooking_method", 1)
 
     if request.method == "POST":
         date = datetime.now()
-        user = mongo.db.users.find_one({"username": session["user"]})
+        user = db.users.find_one({"username": session["user"]})
         recipe = {
             "name": request.form.get("name"),
             "author": user["username"],
@@ -226,9 +234,9 @@ def add_recipe():
             "recipe_image": request.form.get("recipe_image")
         }
         # stores the new ID for the recipe
-        recipeId = mongo.db.recipes.insert_one(recipe)
+        recipeId = db.recipes.insert_one(recipe)
         # pushes new recipe ID to the users "user_recipes"
-        mongo.db.users.update_one(
+        db.users.update_one(
             {"_id": ObjectId(user["_id"])},
             {"$push": {"user_recipes": recipeId.inserted_id}})
         flash("Recipe successfully added, thank you!")
@@ -249,10 +257,10 @@ def edit_recipe(recipe_id):
     this to the template.
     If the request method is post it will update the recipe in MongoDB.
     """
-    categories = mongo.db.categories.find().sort("recipe_category", 1)
-    cuisines = mongo.db.cuisines.find().sort("recipe_cuisine", 1)
-    cooking_methods = mongo.db.cooking_methods.find().sort("cooking_method", 1)
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = db.categories.find().sort("recipe_category", 1)
+    cuisines = db.cuisines.find().sort("recipe_cuisine", 1)
+    cooking_methods = db.cooking_methods.find().sort("cooking_method", 1)
+    recipe = db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     if request.method == "POST":
         submit = {
@@ -268,7 +276,7 @@ def edit_recipe(recipe_id):
             "recipe_yield": request.form.get("recipe_yield"),
             "recipe_image": request.form.get("recipe_image")
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
         return redirect(url_for("my_recipes", username=session["user"]))
 
@@ -282,7 +290,7 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("my_recipes", username=session["user"]))
 
