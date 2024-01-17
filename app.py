@@ -4,36 +4,40 @@ from flask import (
     Flask, flash, render_template, current_app, g,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
-from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env  # noqa
 
 
-# Set the Stable API version when creating a new client
-client = MongoClient(os.environ.get("DB_URI"), server_api=ServerApi('1'))
-                          
-# Send a ping to confirm a successful connection
-try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
-except Exception as e:
-    print(e)
-
-
+# instantiate the app
 app = Flask(__name__)
 
 
-app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["DB_URI"] = os.environ.get("DB_URI")
-app.secret_key = os.environ.get("SECRET_KEY")
+# app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["FLASK_PORT"] = os.environ.get("FLASK_PORT")
 
+# turn on debugging if in development mode
+if os.environ.get("FLASK_ENV", "development") == "development":
+    # turn on debugging, if in development
+    app.debug = True  # debug mnode
 
-app.app_context().push()
-mongo = PyMongo(app)
+# connect to the database
+cxn = MongoClient(os.environ.get("MONGO_URI"))
+db = cxn[os.environ.get("MONGO_DBNAME")]  # store a reference to the database
+
+# the following try/except block is a way to verify that the database connection is alive (or not)
+try:
+    # verify the connection works by pinging the database
+    cxn.admin.command("ping")  # The ping command is cheap and does not require auth.
+    print(" *", "Connected to MongoDB!")  # if we get here, the connection worked!
+except Exception as e:
+    # the ping command failed, so the connection is not available.
+    print(" * MongoDB connection error:", e)  # debug
+
+# set up the routes
 
 
 @app.route("/")
@@ -50,8 +54,6 @@ def all_recipes():
     except: 
         print ("Error getting recipies")
         return render_template("all_recipes.html") 
-
-        
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -283,3 +285,22 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("my_recipes", username=session["user"]))
+
+
+# route to handle any errors
+@app.errorhandler(Exception)
+def handle_error(e):
+    """
+    Output any errors - good for debugging.
+    """
+    return render_template("error.html", error=e)  # render the edit template
+
+
+# run the app
+if __name__ == "__main__":
+    # use the PORT environment variable, or default to 5000
+    FLASK_PORT = os.environ.get("FLASK_PORT", "5000")
+
+    # import logging
+    # logging.basicConfig(filename='/home/ak8257/error.log',level=logging.DEBUG)
+    app.run(port=FLASK_PORT)
