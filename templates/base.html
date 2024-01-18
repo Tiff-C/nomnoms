@@ -28,10 +28,10 @@
                     {% if session.user %}
                         <li><a href="{{ url_for('my_recipes', username=session['user']) }}">My Recipes</a></li>
                         <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><a href="{{ url_for('logout.logout') }}">Logout</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                        <li><a href="{{ url_for('login.login') }}">Login</a></li>
+                        <li><a href="{{ url_for('register.register') }}">Register</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -42,10 +42,10 @@
                 {% if session.user %}
                     <li><a href="{{ url_for('my_recipes', username=session['user']) }}">My Recipes</a></li>
                     <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('logout.logout') }}">Logout</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register.register') }}">Register</a></li>
                 {% endif %}
         </ul>
     </header>
