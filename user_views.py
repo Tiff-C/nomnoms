@@ -1,14 +1,18 @@
 """ Import required modules """
 from flask import (
-    flash, render_template,
+    Flask, Blueprint, flash, render_template,
     redirect, request, session, url_for)
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-from app import app, db
+register_page = Blueprint('register', __name__,
+                        template_folder='templates')
+login_page = Blueprint('login', __name__,
+                        template_folder='templates')
+logout_page = Blueprint('logout', __name__,
+                        template_folder='templates')
 
-
-@app.route("/register", methods=["GET", "POST"])
+@register_page.route("/register", methods=["GET", "POST"])
 def register():
     """
     If the request method is post it will check if the username is already in
@@ -44,7 +48,7 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/login", methods=["GET", "POST"])
+@login_page.route("/login", methods=["GET", "POST"])
 def login():
     """
     Renders login template, if method is post it checks if user exists.
@@ -82,7 +86,7 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/logout")
+@logout_page.route("/logout")
 def logout():
     """
     Logs user out by removing user from session cookies.

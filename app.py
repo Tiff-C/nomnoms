@@ -2,12 +2,12 @@
 import os
 from datetime import datetime
 from flask import (
-    Flask, flash, render_template,
+    Flask, Blueprint, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from pymongo.mongo_client import MongoClient
 from bson.objectid import ObjectId
-from user_views import routes
+from user_views import register_page, login_page, logout_page
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -44,11 +44,12 @@ mongo = PyMongo(app)
 #     # the ping command failed, so the connection is not available.
 #     print(" * MongoDB connection error:", e)  # debug
 
+# imported routes
+app.register_blueprint(register_page)
+app.register_blueprint(login_page)
+app.register_blueprint(logout_page)
 
-
-routes(app)
-
-
+# routes
 @app.route("/")
 @app.route("/all_recipes")
 def all_recipes():
